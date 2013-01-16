@@ -1,9 +1,14 @@
 package com.accept.rpcclient;
 
 /**
- * Author: Hong Zhu(hong.zhu@renren-inc.com)
+ * Author: Hong Zhu(acceptzh@gmail.com)
  * Date: 13-1-9 下午4:08
  */
-public interface Client {
+public interface Client<T> {
+    public static enum ErrorType {
+        UNKNOWN_ERROR, TIMEOUT_ERROR, IGNORE_ERROR
+    }
     boolean isHealthy();
+
+    Object getProxy();
 }
