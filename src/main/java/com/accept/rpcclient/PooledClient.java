@@ -51,7 +51,7 @@ public abstract class PooledClient implements Client {
 
     protected abstract void handleEvent(ClientEvent e);
 
-    protected abstract Class getTargetInterface();
+    public abstract Class getTargetInterface();
 
     @Override
     public Object getProxy() {
@@ -148,7 +148,7 @@ public abstract class PooledClient implements Client {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            //Since rpc don't support overloading,so just use method.getName() for tags.
+            //Since rpc doesn't support overloading,so just use method.getName() for tags.
             StopWatch stopWatch = new Slf4JStopWatch();
 
             Connection conn = get();

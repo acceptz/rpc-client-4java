@@ -52,16 +52,20 @@ public class ThriftPooledClient extends PooledClient {
                 logger.error(String.format("Timeout for pooled client %s", host+":"+port));
                 break;
             default:
-                logger.error(String.format("Unknown err for pooled client %s", host+":"+port));
+                logger.error(String.format("Unknown error for pooled client %s", host+":"+port));
         }
     }
 
     @Override
-    protected Class getTargetInterface() {
+    public Class getTargetInterface() {
         if (targetInterface == null) {
             throw new RuntimeException("targetInterface can't be null!");
         }
 
         return targetInterface;
+    }
+
+    public void setTargetInterface(Class targetInterface) {
+        this.targetInterface = targetInterface;
     }
 }
